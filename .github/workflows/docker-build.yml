@@ -1,0 +1,29 @@
+name: Build and Package Docker Image
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker Image
+        run: |
+          # 构建镜像并打上标签
+          docker build -t my-jupyter-vscode:latest .
+          # 将镜像导出为 tar 包
+          docker save my-jupyter-vscode:latest > jupyter-vscode.tar
+
+      - name: Upload Image Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jupyter-image-tar
+          path: jupyter-vscode.tar
+          retention-days: 1 # 设置保存天数，避免占用过多空间

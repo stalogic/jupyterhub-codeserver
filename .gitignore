@@ -1,0 +1,6 @@
+# 忽略 Jupyter Notebook 自动保存的检查点目录
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# 如果你也想忽略 Jupyter 产生的临时导出文件或日志（可选）
+ipython_log*
