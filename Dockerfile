@@ -5,7 +5,7 @@ USER root
 # 1. 安装 code-server
 # 这里使用官方脚本安装，也可以手动下载 deb/rpm 包以节省构建时间
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl htop git less build-essential && \
     rm -rf /var/lib/apt/lists/* && \
     curl -fsSL https://code-server.dev/install.sh | sh
 
