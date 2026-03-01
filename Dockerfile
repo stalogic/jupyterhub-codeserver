@@ -12,7 +12,7 @@ RUN apt-get update && \
 # 2. 安装必要的 Python 插件来桥接 Jupyter 和 VS Code
 # jupyter-server-proxy: 提供端口转发功能
 # jupyter-vscode-proxy: 自动在 Jupyter 界面添加 VS Code 图标和启动项
-
+RUN chown -R ${NB_USER}:users /home/jovyan
 USER ${NB_USER}
 
 RUN pip install --no-cache-dir \
